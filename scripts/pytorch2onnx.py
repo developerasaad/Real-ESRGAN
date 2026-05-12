@@ -1,6 +1,10 @@
 import argparse
 import torch
 import torch.onnx
+from _torchvision_compat import ensure_torchvision_functional_tensor
+
+ensure_torchvision_functional_tensor()
+
 from basicsr.archs.rrdbnet_arch import RRDBNet
 
 
@@ -11,7 +15,7 @@ def main(args):
         keyname = 'params'
     else:
         keyname = 'params_ema'
-    model.load_state_dict(torch.load(args.input)[keyname])
+    model.load_state_dict(torch.load(args.input, map_location='cpu')[keyname])
     # set the train mode to false since we will only run the forward pass.
     model.train(False)
     model.cpu().eval()
@@ -20,8 +24,8 @@ def main(args):
     x = torch.rand(1, 3, 64, 64)
     # Export the model
     with torch.no_grad():
-        torch_out = torch.onnx._export(model, x, args.output, opset_version=11, export_params=True)
-    print(torch_out.shape)
+        torch.onnx.export(model, x, args.output, opset_version=11, export_params=True)
+    print(f'Exported model to {args.output}')
 
 
 if __name__ == '__main__':

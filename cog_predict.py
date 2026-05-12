@@ -3,15 +3,15 @@
 # running: cog predict -i img=@inputs/00017_gray.png -i version='General - v3' -i scale=2 -i face_enhance=True -i tile=0
 # push: cog push r8.im/xinntao/realesrgan
 
-import os
-
-os.system('pip install gfpgan')
-os.system('python setup.py develop')
-
 import cv2
+import os
 import shutil
 import tempfile
 import torch
+from _torchvision_compat import ensure_torchvision_functional_tensor
+
+ensure_torchvision_functional_tensor()
+
 from basicsr.archs.rrdbnet_arch import RRDBNet
 from basicsr.archs.srvgg_arch import SRVGGNetCompact
 

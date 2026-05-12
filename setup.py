@@ -75,7 +75,12 @@ def get_version():
 def get_requirements(filename='requirements.txt'):
     here = os.path.dirname(os.path.realpath(__file__))
     with open(os.path.join(here, filename), 'r') as f:
-        requires = [line.replace('\n', '') for line in f.readlines()]
+        requires = []
+        for line in f.readlines():
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            requires.append(line)
     return requires
 
 
@@ -92,16 +97,19 @@ if __name__ == '__main__':
         keywords='computer vision, pytorch, image restoration, super-resolution, esrgan, real-esrgan',
         url='https://github.com/xinntao/Real-ESRGAN',
         include_package_data=True,
+        py_modules=['_torchvision_compat'],
         packages=find_packages(exclude=('options', 'datasets', 'experiments', 'results', 'tb_logger', 'wandb')),
         classifiers=[
             'Development Status :: 4 - Beta',
             'License :: OSI Approved :: Apache Software License',
             'Operating System :: OS Independent',
             'Programming Language :: Python :: 3',
-            'Programming Language :: Python :: 3.7',
-            'Programming Language :: Python :: 3.8',
+            'Programming Language :: Python :: 3.10',
+            'Programming Language :: Python :: 3.11',
+            'Programming Language :: Python :: 3.12',
         ],
         license='BSD-3-Clause License',
+        python_requires='>=3.10',
         setup_requires=['cython', 'numpy'],
         install_requires=get_requirements(),
         zip_safe=False)

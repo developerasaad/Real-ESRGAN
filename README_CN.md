@@ -163,8 +163,8 @@ Usage: realesrgan-ncnn-vulkan.exe -i infile -o outfile [options]...
 
 ## :wrench: 依赖以及安装
 
-- Python >= 3.7 (推荐使用[Anaconda](https://www.anaconda.com/download/#linux)或[Miniconda](https://docs.conda.io/en/latest/miniconda.html))
-- [PyTorch >= 1.7](https://pytorch.org/)
+- Python >= 3.10 (推荐使用[Anaconda](https://www.anaconda.com/download/#linux)或[Miniconda](https://docs.conda.io/en/latest/miniconda.html))
+- 当前稳定版 [PyTorch](https://pytorch.org/) 和 TorchVision
 
 #### 安装
 
@@ -178,15 +178,16 @@ Usage: realesrgan-ncnn-vulkan.exe -i infile -o outfile [options]...
 2. 安装各种依赖
 
     ```bash
-    # 安装 basicsr - https://github.com/xinntao/BasicSR
-    # 我们使用BasicSR来训练以及推断
-    pip install basicsr
-    # facexlib和gfpgan是用来增强人脸的
-    pip install facexlib
-    pip install gfpgan
-    pip install -r requirements.txt
-    python setup.py develop
+    python -m pip install --upgrade pip
+    # 按你的 CPU/CUDA 环境安装匹配的 torch/torchvision:
+    # https://pytorch.org/get-started/locally/
+    python -m pip install torch torchvision
+    python -m pip install -r requirements.txt
+    python -m pip install -e .
     ```
+
+    现在仓库里已经带了针对新版 TorchVision 的兼容层，
+    不需要再手动去修改 `site-packages` 里的 `basicsr` 文件。
 
 ## :zap: 快速上手
 

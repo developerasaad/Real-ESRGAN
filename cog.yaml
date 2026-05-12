@@ -3,20 +3,21 @@ image: "r8.im/tencentarc/realesrgan"
 
 build:
   gpu: true
-  python_version: "3.8"
+  python_version: "3.11"
   system_packages:
     - "libgl1-mesa-glx"
     - "libglib2.0-0"
   python_packages:
-    - "torch==1.7.1"
-    - "torchvision==0.8.2"
-    - "numpy==1.21.1"
-    - "lmdb==1.2.1"
-    - "opencv-python==4.5.3.56"
-    - "PyYAML==5.4.1"
-    - "tqdm==4.62.2"
-    - "yapf==0.31.0"
+    - "torch==2.11.0"
+    - "torchvision==0.26.0"
+    - "numpy"
+    - "lmdb"
+    - "opencv-python"
+    - "PyYAML"
+    - "tqdm"
+    - "yapf"
     - "basicsr==1.4.2"
-    - "facexlib==0.2.5"
+    - "facexlib==0.3.0"
+    - "gfpgan==1.3.8"
 
 predict: "cog_predict.py:Predictor"

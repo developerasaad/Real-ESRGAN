@@ -86,8 +86,8 @@ Other recommended projects:<br>
 
 ## 🔧 Dependencies and Installation
 
-- Python >= 3.7 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
-- [PyTorch >= 1.7](https://pytorch.org/)
+- Python >= 3.10 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
+- Current stable [PyTorch](https://pytorch.org/) and TorchVision
 
 ### Installation
 
@@ -101,15 +101,16 @@ Other recommended projects:<br>
 1. Install dependent packages
 
     ```bash
-    # Install basicsr - https://github.com/xinntao/BasicSR
-    # We use BasicSR for both training and inference
-    pip install basicsr
-    # facexlib and gfpgan are for face enhancement
-    pip install facexlib
-    pip install gfpgan
-    pip install -r requirements.txt
-    python setup.py develop
+    python -m pip install --upgrade pip
+    # Install the matching torch/torchvision build for your CPU or CUDA setup:
+    # https://pytorch.org/get-started/locally/
+    python -m pip install torch torchvision
+    python -m pip install -r requirements.txt
+    python -m pip install -e .
     ```
+
+    The repo now includes a compatibility shim for recent TorchVision releases,
+    so you do not need to patch `basicsr` inside `site-packages` by hand.
 
 ---
 

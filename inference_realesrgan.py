@@ -2,6 +2,10 @@ import argparse
 import cv2
 import glob
 import os
+from _torchvision_compat import ensure_torchvision_functional_tensor
+
+ensure_torchvision_functional_tensor()
+
 from basicsr.archs.rrdbnet_arch import RRDBNet
 from basicsr.utils.download_util import load_file_from_url
 

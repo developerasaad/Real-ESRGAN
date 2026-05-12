@@ -6,7 +6,12 @@ import numpy as np
 import os
 import shutil
 import subprocess
+import sys
 import torch
+from _torchvision_compat import ensure_torchvision_functional_tensor
+
+ensure_torchvision_functional_tensor()
+
 from basicsr.archs.rrdbnet_arch import RRDBNet
 from basicsr.utils.download_util import load_file_from_url
 from os import path as osp
@@ -18,8 +23,7 @@ from realesrgan.archs.srvgg_arch import SRVGGNetCompact
 try:
     import ffmpeg
 except ImportError:
-    import pip
-    pip.main(['install', '--user', 'ffmpeg-python'])
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', '--user', 'ffmpeg-python'])
     import ffmpeg
 
 
@@ -269,7 +273,8 @@ def inference_video(args, video_save_path, device=None, total_workers=1, worker_
         else:
             writer.write_frame(output)
 
-        torch.cuda.synchronize(device)
+        if device is not None and device.type == 'cuda':
+            torch.cuda.synchronize(device)
         pbar.update(1)
 
     reader.close()

@@ -3,6 +3,10 @@ import cv2
 import numpy as np
 import os
 import sys
+from _torchvision_compat import ensure_torchvision_functional_tensor
+
+ensure_torchvision_functional_tensor()
+
 from basicsr.utils import scandir
 from multiprocessing import Pool
 from os import path as osp
