@@ -8,10 +8,6 @@ import shutil
 import subprocess
 import sys
 import torch
-from _torchvision_compat import ensure_torchvision_functional_tensor
-
-ensure_torchvision_functional_tensor()
-
 from basicsr.archs.rrdbnet_arch import RRDBNet
 from basicsr.utils.download_util import load_file_from_url
 from os import path as osp

@@ -97,7 +97,6 @@ if __name__ == '__main__':
         keywords='computer vision, pytorch, image restoration, super-resolution, esrgan, real-esrgan',
         url='https://github.com/xinntao/Real-ESRGAN',
         include_package_data=True,
-        py_modules=['_torchvision_compat'],
         packages=find_packages(exclude=('options', 'datasets', 'experiments', 'results', 'tb_logger', 'wandb')),
         classifiers=[
             'Development Status :: 4 - Beta',

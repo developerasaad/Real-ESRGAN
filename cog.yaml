@@ -16,7 +16,7 @@ build:
     - "PyYAML"
     - "tqdm"
     - "yapf"
-    - "basicsr==1.4.2"
+    - "git+https://github.com/XPixelGroup/BasicSR.git@8d56e3a045f9fb3e1d8872f92ee4a4f07f886b0a"
     - "facexlib==0.3.0"
     - "gfpgan==1.3.8"
 

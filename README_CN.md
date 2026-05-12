@@ -186,8 +186,8 @@ Usage: realesrgan-ncnn-vulkan.exe -i infile -o outfile [options]...
     python -m pip install -e .
     ```
 
-    现在仓库里已经带了针对新版 TorchVision 的兼容层，
-    不需要再手动去修改 `site-packages` 里的 `basicsr` 文件。
+    `requirements.txt` 会直接安装一个来自 BasicSR 上游仓库的修复提交，
+    因为 PyPI 上的最新发布版对新版 TorchVision 仍然偏旧。
 
 ## :zap: 快速上手
 

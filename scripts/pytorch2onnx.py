@@ -1,10 +1,6 @@
 import argparse
 import torch
 import torch.onnx
-from _torchvision_compat import ensure_torchvision_functional_tensor
-
-ensure_torchvision_functional_tensor()
-
 from basicsr.archs.rrdbnet_arch import RRDBNet
 
 

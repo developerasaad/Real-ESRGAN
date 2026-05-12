@@ -109,8 +109,8 @@ Other recommended projects:<br>
     python -m pip install -e .
     ```
 
-    The repo now includes a compatibility shim for recent TorchVision releases,
-    so you do not need to patch `basicsr` inside `site-packages` by hand.
+    `requirements.txt` installs BasicSR from a fixed upstream Git commit because
+    the latest PyPI release is still outdated for modern TorchVision.
 
 ---
 

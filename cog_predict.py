@@ -8,10 +8,6 @@ import os
 import shutil
 import tempfile
 import torch
-from _torchvision_compat import ensure_torchvision_functional_tensor
-
-ensure_torchvision_functional_tensor()
-
 from basicsr.archs.rrdbnet_arch import RRDBNet
 from basicsr.archs.srvgg_arch import SRVGGNetCompact
 
